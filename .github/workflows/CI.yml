@@ -47,7 +47,7 @@ jobs:
       fail-fast: false
       matrix:
         examples:
-          - "examples"
+          - "DHT"
 
         package: ["pio","qio"]
         os: [ubuntu-latest, windows-latest, macos-latest]
@@ -78,7 +78,7 @@ jobs:
       - name: Build
         if: success()
         run: |
-          pio run -d ${{ matrix.examples }}
+          pio run -d ${{ matrix.examples }}/examples
 
   # check:
   #   runs-on: ubuntu-latest
