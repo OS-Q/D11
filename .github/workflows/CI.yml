@@ -77,5 +77,5 @@ jobs:
       - name: Build
         if: success()
         run: |
-          export PLATFORMIO_LIBDEPS_DIR=${{ matrix.examples }}
+          export PLATFORMIO_GLOBALLIB_DIR=${{ matrix.examples }}
           pio run -d ${{ matrix.examples }}
