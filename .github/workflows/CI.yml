@@ -48,10 +48,9 @@ jobs:
       matrix:
         examples:
           - "DHT"
-
         package: ["pio","qio"]
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
