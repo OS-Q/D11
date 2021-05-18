@@ -77,4 +77,4 @@ jobs:
       - name: Build
         if: success()
         run: |
-          pio run -d ${{ matrix.examples }}/examples
+          pio run -d ${{ matrix.examples }}
