@@ -73,9 +73,9 @@ jobs:
         run: |
           pip install -U https://github.com/platformio/platformio/archive/develop.zip
           pio platform install https://github.com/OS-Q/P111/archive/master.zip
+          export PLATFORMIO_GLOBALLIB_DIR=${{ matrix.examples }}
 
       - name: Build
         if: success()
         run: |
-          export PLATFORMIO_GLOBALLIB_DIR=${{ matrix.examples }}
           pio run -d ${{ matrix.examples }}
