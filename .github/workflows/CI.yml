@@ -50,7 +50,7 @@ jobs:
         with:
           submodules: "recursive"
           fetch-depth: 1
-      - uses: Arduino-CI/action@master
+      - uses: Qful/arduino-action@master
 
   build:
     strategy:
