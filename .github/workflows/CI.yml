@@ -88,5 +88,6 @@ jobs:
       - name: Build
         if: success()
         run: |
+          pio lib -g install  https://github.com/adafruit/Adafruit_Sensor/archive/master.zip
           pio ci --lib="." --board=uno --board=leonardo --board=megaatmega2560 examples/${{ matrix.examples }}/${{ matrix.examples }}.ino
 
