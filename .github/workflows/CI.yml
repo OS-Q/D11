@@ -42,12 +42,23 @@ jobs:
         name: code_check_report
         path: codecheck.txt
 
+  arduino:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+          fetch-depth: 1
+      - uses: Arduino-CI/action@master
+
   build:
     strategy:
       fail-fast: false
       matrix:
         examples:
-          - "DHT"
+          - "DHTtester"
+          - "DHT_Unified_Sensor"
         package: ["pio","qio"]
 
     runs-on: ubuntu-latest
@@ -73,9 +84,9 @@ jobs:
         run: |
           pip install -U https://github.com/platformio/platformio/archive/develop.zip
           pio platform install https://github.com/OS-Q/P111/archive/master.zip
-          export PLATFORMIO_GLOBALLIB_DIR=${{ matrix.examples }}
 
       - name: Build
         if: success()
         run: |
-          pio run -d ${{ matrix.examples }}
+          pio ci --lib="." --board=uno --board=leonardo --board=megaatmega2560 examples/${{ matrix.examples }}/${{ matrix.examples }}.ino
+
